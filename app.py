@@ -15,9 +15,6 @@ def view_list():
 def view_review():
  return render_template("review.html")
 
-@application.route("/reg_items")
-def reg_item():
- return render_template("reg_items.html")
 
 @application.route("/reg_reviews")
 def reg_review():
@@ -26,7 +23,7 @@ def reg_review():
 if __name__ == "__main__":
  application.run(host='0.0.0.0')
 
-@application.route("/submit_item")
+@application.route("/reg_items")
 def reg_item_submit():
     name=request.args.get("name")
     seller=request.args.get("seller")
@@ -37,6 +34,8 @@ def reg_item_submit():
     status=request.args.get("status")
     phone=request.args.get("phone")
     print(name,seller,addr,email,category,card,status,phone)
+    
+    return render_template("reg_items.html")
     
     
 @application.route("/submit_item_result", methods=['POST'])
